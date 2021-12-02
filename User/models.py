@@ -54,6 +54,7 @@ class Account(AbstractBaseUser):
         return not self.is_staff
 
 
+
 # proxy model for Account model(Custom User Model)
 class Student(Account):
     class Meta:

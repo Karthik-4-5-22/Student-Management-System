@@ -6,6 +6,9 @@ from .models import (
     Student
 )
 
+admin.site.site_header = "Admin Panel"
+admin.site.site_title = "AdminPanel"
+
 # Register your models here.
 admin.site.unregister(Group)
 

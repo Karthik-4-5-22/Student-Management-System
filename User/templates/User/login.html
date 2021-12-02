@@ -1,37 +1,27 @@
 {% extends 'User/main.html' %}
-
-<style>
-    .login {
-        margin: auto;
-        width: 400px;
-    }
-
-    .btn {
-        margin: auto;
-        display: block;
-        width: 70px;
-    }
-</style>
-
-
 {% block content %}
 
-<form action="" method="post" class="login">
+<form action="" method="post" class="login_form">
     {% csrf_token %}
-    <div class="username">
-        <label for="rollno">Roll No</label>
-        <input type="text" name="rollno" id="rollno" placeholder="Enter Roll Number" >
+    <div class="login_form_head">
+        <div class="brand">Login</div>
     </div>
-    <div class="password">
-        <label for="pwd">Password</label>
-        <input type="password" name="pwd" id="pwd" placeholder="Enter Password" >
+    <div class="error-msgs login_form_element">
+        <ul>
+            {% for val in error_msgs%}
+        <li>{{val}}</li>
+        {% endfor %}
+        </ul>
     </div>
-    <button type="submit" class="btn" >Submit</button>
-    <div class="error-msgs">
-    {% for val in error_msgs%}
-        <h6 style="color:red;">{{val}}</h6>
-    {% endfor %}
+    <div class="username login_form_element">
+        <label for="rollno">Roll No:</label>
+        <input type="text" name="rollno" id="rollno" placeholder="Enter Roll Number" autofocus="autofocus">
     </div>
+    <div class="password login_form_element">
+        <label for="pwd">Password:</label>
+        <input type="password" name="pwd" id="pwd" placeholder="Enter Password">
+    </div>
+    <button type="submit" class="btn">Submit</button>
 </form>
 
 {% endblock %}

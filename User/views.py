@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Student
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 # Create your views here.
@@ -33,7 +33,12 @@ def user_login(request):
     return render(request, "User/login.html", context)
 
 
+def check_student(user):
+    return not user.is_staff
+
+
 @login_required(login_url="/login")
+@user_passes_test(check_student,login_url="/admin/login")
 def details(request):
     return render(request, "User/Details.html")
 
@@ -44,7 +49,6 @@ def user_logout(request):
 
 
 # functions
-
 def check_values(user, context):
     crt = True
     if user["rollno"] == "":
