@@ -3,7 +3,9 @@ from django.contrib.auth.models import Group, make_password
 from django.contrib.auth.admin import UserAdmin
 from .models import (
     Account,
-    Student
+    Student,
+    Courses,
+    Details,
 )
 
 admin.site.site_header = "Admin Panel"
@@ -13,7 +15,6 @@ admin.site.site_title = "AdminPanel"
 admin.site.unregister(Group)
 
 
-@admin.register(Account)
 class AccountAdmin(UserAdmin):
     list_display = ("username", "date_joined", "last_login", "is_staff", "is_superuser", "is_active")
     list_filter = ("is_staff", "is_active", "date_joined")
@@ -54,3 +55,7 @@ class StudentAdmin(AccountAdmin):
 
     def get_queryset(self, request):
         return super().get_queryset(request).filter(is_staff=0)
+
+
+admin.site.register(Courses)
+admin.site.register(Details)

@@ -38,9 +38,12 @@ def check_student(user):
 
 
 @login_required(login_url="/login")
-@user_passes_test(check_student,login_url="/admin/login")
+@user_passes_test(check_student, login_url="/admin/login")
 def details(request):
-    return render(request, "User/Details.html")
+    user = request.user
+    user_details = user.details_set.all()[0]
+    context = {"user": user_details, "percent": (user_details.cgpa - 0.75) * 10}
+    return render(request, "User/Details.html", context)
 
 
 def user_logout(request):

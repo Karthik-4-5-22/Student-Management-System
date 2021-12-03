@@ -1,9 +1,42 @@
 {% extends "User/main.html" %}
 
 {% block content %}
+<div class="container">
+    <div class="firstname">
+        <span class="name">First Name:</span>
+        <span class="value">{{user.firstname}}</span>
+    </div>
+    <div class="lastnamme">
+        <span>Last Name:</span>
+        <span>{{user.lastname}}</span>
+    </div>
+    <div class="mail">
+        <span>E-Mail:</span>
+        <span>{{user.email}}</span>
+    </div>
+    <div class="number">
+        <span>Mobile Number:</span>
+        <span>{{user.mobile_no}}</span>
+    </div>
+    <div class="course">
+        <span>Course:</span>
+        <span>{{user.course}}</span>
+    </div>
+    <div class="year">
+        <span>Year:</span>
+        <span>{{user.current_year}}</span>
+    </div>
+    <div class="cgpa">
+        <span>CGPA:</span>
+        <span>{{user.cgpa}}</span>
+    </div>
+    <div class="percentage">
+        <span>Percentage:</span>
+        <span>{{percent}}</span>
+    </div>
+    <div class="options">
+        <a href="{% url 'Logout' %}">Logout</a>
+    </div>
+</div>
 
-<h2>welcome!</h2>
-<h4>Hii {{request.user.username}}</h4>
-
-<a href="{% url 'Logout' %}">Logout</a>
 {% endblock %}

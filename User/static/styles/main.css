@@ -2,6 +2,10 @@ body {
     box-sizing: border-box;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+}
 /* login page */
 
 .login_form {
@@ -40,10 +44,7 @@ body {
     color: #e35f5f;
 }
 
-.login_form .error-msgs {
-    border: 2px solid #e35f5f;
 
-}
 
 .login_form_element>* {
     display: block;
@@ -74,4 +75,22 @@ body {
 
 .btn:hover {
     background-color: #609ab6;
+}
+
+/*details page*/
+
+.container {
+    margin: auto;
+    width: 50%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container>div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border: 1px solid black;
 }
